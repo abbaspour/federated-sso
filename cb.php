@@ -1,34 +1,36 @@
 <?php
 
-$domain='TENANT.auth0.com';
+include 'vars.php';
+
+$domain=$AUTH0_DOMAIN;
 
 $app = substr($_SERVER['HTTP_HOST'], 0, 4);
 
 // app1.com
-$client_id_1='APP1_CLIENT_ID';
-$client_secret_1='APP1_CLIENT_SECRET';
-$redirect_uri_1 = 'http://app1.com/~amin/federated-sso/cb.php';
-$landing_page_1='http://app1.com/~amin/federated-sso/app.php';
+$client_id_1=$APP1_CLIENT_ID;
+$client_secret_1=$APP1_CLIENT_SECRET;
+$redirect_uri_1 = $APP1_REDIRECT_URL;
+$landing_page_1=$APP1_LANDING_URL;
 
 // app2.com
-$client_id_2='APP2_CLIENT_ID';
-$client_secret_2='APP2_CLIENT_SECRET';
-$redirect_uri_2 = 'http://app2.com/~amin/federated-sso/cb.php';
-$landing_page_2='http://app2.com/~amin/federated-sso/app.php';
+$client_id_2=$APP2_CLIENT_ID ;
+$client_secret_2=$APP2_CLIENT_SECRET;
+$redirect_uri_2 = $APP2_REDIRECT_URL;
+$landing_page_2=$APP2_LANDING_URL;
 
 if($app === 'app1') {
     $client_id=$client_id_1;
     $client_secret=$client_secret_1;
     $redirect_uri =$redirect_uri_1;
     $landing_page=$landing_page_1;
-    $federated_login='https://'.$domain.'/authorize?client_id='.$client_id_2.'&response_type=code&prompt=none&&state=app1sso&nonce=sso1&redirect_uri='.urlencode($redirect_uri_2.'?sso=true');
+    $federated_login='https://'.$domain.'/authorize?client_id='.$client_id_2.'&response_type=code&prompt=none&&state='.$app.'sso&nonce=sso1&redirect_uri='.urlencode($redirect_uri_2.'?sso=true');
     $other_app_landing=$landing_page_2;
 } else if ($app === 'app2') {
     $client_id=$client_id_2;
     $client_secret=$client_secret_2;
     $redirect_uri =$redirect_uri_2;
     $landing_page=$landing_page_2;
-    $federated_login='https://'.$domain.'/authorize?client_id='.$client_id_1.'&response_type=code&prompt=none&state=app2sso&nonce=sso2&redirect_uri='.urlencode($redirect_uri_1.'?sso=true');
+    $federated_login='https://'.$domain.'/authorize?client_id='.$client_id_1.'&response_type=code&prompt=none&state='.$app.'sso&nonce=sso2&redirect_uri='.urlencode($redirect_uri_1.'?sso=true');
     $other_app_landing=$landing_page_1;
 } else {
     die('unknown app: '. $app);
@@ -68,6 +70,7 @@ if($result_string === FALSE) {
 
 $result = json_decode($result_string, true);
 //var_dump($result);
+
 
 $access_token=$result['access_token'];
 setcookie($app, $access_token);
