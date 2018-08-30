@@ -30,7 +30,7 @@ Create two Auth0 applications:
 |--------|-------|
 | Type | regular web app |
 | Allowed Callback URLs | http://app1.com/cb.php, http://app2.com/cb.php |
-| Allowed Logout URLs | http://app2.com/login.php?sso=true |
+| Allowed Logout URLs | http://app1.com/login.php?sso=true |
 
  
 #### Federated SSO - App2
@@ -39,7 +39,7 @@ Create two Auth0 applications:
 |--------|-------|
 | Type | regular web app |
 | Allowed Callback URLs | http://app1.com/cb.php, http://app2.com/cb.php |
-| Allowed Logout URLs | http://app1.com/login.php?sso=true |
+| Allowed Logout URLs | http://app2.com/login.php?sso=true |
 
 
 Configuration
