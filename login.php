@@ -28,11 +28,5 @@ echo '<html>
 </html>';
 
 
-$sso_mode = $_GET['sso'];
-
-if($sso_mode === 'true') { // sso mode = true and came from logout.
-    echo ' <iframe src="'. $other_app_logout_url .'" style="width:0;height:0;border:0; border:none;" />';
-}
-
 
 ?>
