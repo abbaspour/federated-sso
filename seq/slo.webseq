@@ -1,0 +1,21 @@
+title Cross Domain SLO
+
+participant User as u
+participant app1.com as app1
+participant Auth0 as a0
+participant app2.com as app2
+
+u -> +app1: /logout
+app1 --> u: remove cookie
+app1 --> u: img auth0 /v2/logout
+app1 --> u: img app2 /logout?sso=true
+
+u -> +a0: /v2/logout
+a0 --> -u: remove cookie
+
+u -> +app2: /logout?sso=true
+app2 --> -u: remove cookie
+
+
+app1 --> app1: wait 5sec
+app1 --> -u: redirect /logoin

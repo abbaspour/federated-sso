@@ -1,0 +1,21 @@
+title Cross Domain SSO
+
+participant User as u
+participant app1.com as app1
+participant Auth0 as a0
+participant app2.com as app2
+
+u->app1: Login
+app1 -> +a0: /authorize?client_id=client1
+a0 --> -u: /login
+u -> a0: credentails
+a0 -> app1: /callback?code=c1
+app1 --> a0: exchange
+app1 -> a0: /authorize?client_id=client2&prompt=none
+a0 -> a0: auth0 session present?
+a0 -> app2: /callback?code=c2
+app2 --> a0: exchange
+app2 -> app1: redirect
+app1 -> u: /landing
+
+

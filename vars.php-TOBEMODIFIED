@@ -1,19 +1,25 @@
 <?php
 
-$APP1_CLIENT_ID = XXX ;
-$APP2_CLIENT_ID = XXX ;
-$APP1_CLIENT_SECRET = XXX ;
-$APP2_CLIENT_SECRET = XXX ;
+$AUTH0_DOMAIN = 'TENANT.(au|eu).auth0.com' ;
 
-$APP1_LOGOUT_URL = 'http://app1.com/logout.php';
-$APP2_LOGOUT_URL = 'http://app2.com/logout.php';
-$APP1_LOGIN_URL = 'http://app1.com/login.php';
-$APP2_LOGIN_URL = 'http://app2.com/login.php';
-$APP1_LANDING_URL = 'http://app1.com/app.php';
-$APP2_LANDING_URL = 'http://app2.com/app.php';
+$APP1_CLIENT_ID = 'XXX' ;
+$APP1_CLIENT_SECRET = 'XXX' ;
 
-$APP1_REDIRECT_URL = 'http://app1.com/cb.php';
-$APP2_REDIRECT_URL = 'http://app2.com/cb.php';
-$AUTH0_DOMAIN = XXX ;
+$APP2_CLIENT_ID = 'XXX' ;
+$APP2_CLIENT_SECRET = 'XXX' ;
 
+$APP1_BASE_URL = 'http://app1.com'; // 'http://app1.com/~amin/federated-sso';
+$APP2_BASE_URL = 'http://app2.com'; // 'http://app2.com/~amin/federated-sso';
+
+$APP1_LOGOUT_URL = "$APP1_BASE_URL/logout.php";
+$APP2_LOGOUT_URL = "$APP2_BASE_URL/logout.php";
+
+$APP1_LOGIN_URL = "$APP1_BASE_URL/login.php";
+$APP2_LOGIN_URL = "$APP2_BASE_URL/login.php";
+
+$APP1_LANDING_URL = "$APP1_BASE_URL/app.php";
+$APP2_LANDING_URL = "$APP2_BASE_URL/app.php";
+
+$APP1_REDIRECT_URL = "$APP1_BASE_URL/cb.php";
+$APP2_REDIRECT_URL = "$APP2_BASE_URL/cb.php";
 ?>

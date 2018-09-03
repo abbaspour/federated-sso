@@ -6,7 +6,13 @@ Shows how to perform Federated cross-site single sign-in (SSO) and single sign-o
 How Does it Work?
 =================
 
+Cross Domain Single Sign On
+---------------------------
 ![federated sso](http://i66.tinypic.com/343p7vs.png)
+
+Cross Domain Single Log Out 
+---------------------------
+![federated sso](http://i68.tinypic.com/2eltwlf.png)
 
 Setup
 =====
@@ -45,14 +51,14 @@ Create two Auth0 applications:
 Configuration
 -----------
 
-Update the following variables in vars.php.
+Copy `vars.php-TOBEMODIFIED` to `vars.php` and update the following variables.
 
 | Config | Value |
 |--------|-------|
-| $APP1_CLIENT_ID | App1 client ID; |
-| $APP2_CLIENT_ID | App1 client ID; |
-| $APP1_CLIENT_SECRET | App1 client Secret; |
-|$APP2_CLIENT_SECRET |  App1 client Secret; |
-|$AUTH0_DOMAIN | AUTH0 TENANT; |
+| $AUTH0_DOMAIN | AUTH0 TENANT |
+| $APP1_CLIENT_ID | App1 client ID |
+| $APP1_CLIENT_SECRET | App1 client Secret |
+| $APP2_CLIENT_ID | App2 client ID |
+| $APP2_CLIENT_SECRET |  App2 client Secret |
 
 
