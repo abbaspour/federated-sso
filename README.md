@@ -29,8 +29,8 @@ Create two Auth0 applications:
 | Config | Value |
 |--------|-------|
 | Type | regular web app |
-| Allowed Callback URLs | http://app1.com/~amin/federated-sso/cb.php, http://app2.com/~amin/federated-sso/cb.php |
-| Allowed Logout URLs | http://app2.com/~amin/federated-sso/logout.php?sso=true | 
+| Allowed Callback URLs | http://app1.com/cb.php, http://app2.com/cb.php |
+| Allowed Logout URLs | http://app1.com/login.php?sso=true |
 
  
 #### Federated SSO - App2
@@ -38,13 +38,21 @@ Create two Auth0 applications:
 | Config | Value |
 |--------|-------|
 | Type | regular web app |
-| Allowed Callback URLs | http://app1.com/~amin/federated-sso/cb.php, http://app2.com/~amin/federated-sso/cb.php |
-| Allowed Logout URLs | http://app2.com/~amin/federated-sso/logout.php?sso=true | 
+| Allowed Callback URLs | http://app1.com/cb.php, http://app2.com/cb.php |
+| Allowed Logout URLs | http://app2.com/login.php?sso=true |
 
-Source Code
+
+Configuration
 -----------
 
-Grab `client_id` and `client_secret` and update these file: `login1.html`, `login2.html`, `cb.php`, `app.php` and `logout.php` 
-Update AUTH0 domain.
+Update the following variables in vars.php.
+
+| Config | Value |
+|--------|-------|
+| $APP1_CLIENT_ID | App1 client ID; |
+| $APP2_CLIENT_ID | App1 client ID; |
+| $APP1_CLIENT_SECRET | App1 client Secret; |
+|$APP2_CLIENT_SECRET |  App1 client Secret; |
+|$AUTH0_DOMAIN | AUTH0 TENANT; |
 
 
