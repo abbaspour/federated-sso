@@ -23,14 +23,14 @@ if ($app === 'app1') {
     $client_secret = $client_secret_1;
     $redirect_uri = $redirect_uri_1;
     $landing_page = $landing_page_1;
-    $federated_login = 'https://' . $domain . '/authorize?client_id=' . $client_id_2 . '&response_type=code&prompt=none&&state=' . $app . 'sso&nonce=sso1&redirect_uri=' . urlencode($redirect_uri_2 . '?sso=true');
+    $federated_login = 'https://' . $domain . '/authorize?client_id=' . $client_id_2 . '&response_type=code&prompt=none&scope=openid%20profile&state=' . $app . 'sso&nonce=sso1&redirect_uri=' . urlencode($redirect_uri_2 . '?sso=true');
     $other_app_landing = $landing_page_2;
 } else if ($app === 'app2') {
     $client_id = $client_id_2;
     $client_secret = $client_secret_2;
     $redirect_uri = $redirect_uri_2;
     $landing_page = $landing_page_2;
-    $federated_login = 'https://' . $domain . '/authorize?client_id=' . $client_id_1 . '&response_type=code&prompt=none&state=' . $app . 'sso&nonce=sso2&redirect_uri=' . urlencode($redirect_uri_1 . '?sso=true');
+    $federated_login = 'https://' . $domain . '/authorize?client_id=' . $client_id_1 . '&response_type=code&prompt=none&scope=openid%20profile&state=' . $app . 'sso&nonce=sso2&redirect_uri=' . urlencode($redirect_uri_1 . '?sso=true');
     $other_app_landing = $landing_page_1;
 } else {
     die('unknown app: ' . $app);
