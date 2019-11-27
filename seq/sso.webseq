@@ -1,21 +1,41 @@
-title Cross Domain SSO
+title Cross Domain SSO with Silent Login
 
 participant User as u
-participant app1.com as app1
+participant Application A as app1 
 participant Auth0 as a0
-participant app2.com as app2
+participant Application B as app2 
 
-u->app1: Login
-app1 -> +a0: /authorize?client_id=client1
-a0 --> -u: /login
-u -> a0: credentails
-a0 -> app1: /callback?code=c1
-app1 --> a0: exchange
-app1 -> a0: /authorize?client_id=client2&prompt=none
-a0 -> a0: auth0 session present?
-a0 -> app2: /callback?code=c2
-app2 --> a0: exchange
-app2 -> app1: redirect
-app1 -> u: /landing
-
-
+u->app1: 1. Login
+note right of app1
+    no session, redirect to Auth0
+end note
+app1 -> +a0: 2. /authorize?client_id=appA
+a0 --> -u: 2.1. /login
+u -> a0: 3. type in credentails
+note right of a0
+    login successful 
+    drop auth0 session cookie
+end note
+a0 -> app1: 4. /callback?code=c1
+app1 --> a0: 5. exchange code
+note right of app1
+    login successfull, create "App A" session
+    drops session cookie
+end note
+app1 -> app2: 6. /silent-login?returnURL=app1/landing
+note right of app1
+    no session and requested silent login
+    redirect to auth0 with prompt none
+end note
+app2 -> a0: 7. /authorize?client_id=appB&prompt=none
+note right of a0
+    auth0 session present?
+end note
+a0 -> app2: 8. /callback?code=c2
+app2 --> a0: 8.1. exchange code
+note left of app2
+    login successfull, create "App B" session
+    drops session cookie
+end note
+app2 -> app1: 9. redirect to returnURL app1/landing
+app1 -> u: render /landing page
